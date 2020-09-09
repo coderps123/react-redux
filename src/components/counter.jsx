@@ -8,7 +8,8 @@ export default class Counter extends Component {
   static propTypes = {
     count: PropTypes.number.isRequired,
     increment: PropTypes.func.isRequired,
-    decrement: PropTypes.func.isRequired
+    decrement: PropTypes.func.isRequired,
+    incrementAsync: PropTypes.func.isRequired
   }
 
   toast = ()=> {
@@ -39,10 +40,8 @@ export default class Counter extends Component {
   incrementAsync = ()=> {
     // 1. 先获取选择框要添加的值
     const selectValue = this.select.value * 1
-    setTimeout(() => {
-      // 3. 更新count值
-      this.props.increment(selectValue)
-    }, 1000)
+    // 发送异步请求
+    this.props.incrementAsync(selectValue)
   }
 
   render() {
